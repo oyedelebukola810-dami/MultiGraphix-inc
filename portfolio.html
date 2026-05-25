@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio — Multi Graphix Inc</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  <div class="bg-glow glow-one"></div>
+  <div class="bg-glow glow-two"></div>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo-area">
+      <img src="https://res.cloudinary.com/dkysh74zg/image/upload/v1779389443/IMG-20260520-WA0012_mrmh0l.jpg" alt="MG Logo" class="logo-image"/>
+      <div class="logo-text">
+        <h2>MULTI GRAPHIX</h2>
+        <p>INC</p>
+      </div>
+    </div>
+    <ul id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html" class="active-link">Portfolio</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="order.html" class="order-btn">Order Now</a></li>
+    </ul>
+    <div class="menu-toggle" id="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <p class="hero-tag">— OUR WORK</p>
+    <h1>PORTFOLIO</h1>
+    <p class="hero-text">A showcase of our finest creative work across branding, design, web, and more.</p>
+  </section>
+
+  <!-- FILTER BUTTONS -->
+  <section style="padding-top: 0;">
+    <div class="filter-btns">
+      <button class="filter-btn active-filter" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="logo">Logo Design</button>
+      <button class="filter-btn" data-filter="branding">Branding</button>
+      <button class="filter-btn" data-filter="flyer">Flyer</button>
+      <button class="filter-btn" data-filter="mockup">Mockup</button>
+      <button class="filter-btn" data-filter="web">Web</button>
+      <button class="filter-btn" data-filter="social">Social Media</button>
+    </div>
+
+    <!-- PORTFOLIO GRID -->
+    <div class="portfolio-grid portfolio-full">
+
+      <div class="portfolio-card" data-category="logo">
+        <img src="https://res.cloudinary.com/dkysh74zg/image/upload/v1779389443/IMG-20260520-WA0012_mrmh0l.jpg" alt="Logo Project"/>
+        <div class="portfolio-overlay">
+          <h3>LOGO DESIGN</h3>
+          <p>Brand Identity</p>
+        </div>
+      </div>
+
+      <div class="portfolio-card" data-category="branding">
+        <img src="https://res.cloudinary.com/dkysh74zg/image/upload/v1779389471/IMG-20260520-WA0013_gai0dc.jpg" alt="Branding Project"/>
+        <div class="portfolio-overlay">
+          <h3>BRANDING</h3>
+          <p>Full Brand Package</p>
+        </div>
+      </div>
+
+      <div class="portfolio-card" data-category="flyer">
+        <img src="https://res.cloudinary.com/dkysh74zg/image/upload/v1779389491/IMG-20260520-WA0014_w96epu.jpg" alt="Flyer Project"/>
+        <div class="portfolio-overlay">
+          <h3>FLYER DESIGN</h3>
+          <p>Event Promotion</p>
+        </div>
+      </div>
+
+      <div class="portfolio-card" data-category="mockup">
+        <img src="https://res.cloudinary.com/dkysh74zg/image/upload/v1779389508/IMG-20260521-WA0028_bspwzy.jpg" alt="Mockup Project"/>
+        <div class="portfolio-overlay">
+          <h3>BRAND MOCKUP</h3>
+          <p>Product Presentation</p>
+        </div>
+      </div>
+
+      <div class="portfolio-card" data-category="web">
+        <img src="https://res.cloudinary.com/dkysh74zg/image/upload/v1779389525/IMG-20260520-WA0017_sroxem.jpg" alt="Web Project"/>
+        <div class="portfolio-overlay">
+          <h3>WEB DESIGN</h3>
+          <p>UI/UX Development</p>
+        </div>
+      </div>
+
+      <div class="portfolio-card" data-category="social">
+        <img src="https://res.cloudinary.com/dkysh74zg/image/upload/v1779389542/IMG-20260520-WA0015_sydslc.jpg" alt="Social Media Project"/>
+        <div class="portfolio-overlay">
+          <h3>SOCIAL MEDIA</h3>
+          <p>Content Creation</p>
+        </div>
+      </div>
+
+      <div class="portfolio-card" data-category="logo">
+        <img src="https://res.cloudinary.com/dkysh74zg/image/upload/v1779389443/IMG-20260520-WA0012_mrmh0l.jpg" alt="Logo Project 2"/>
+        <div class="portfolio-overlay">
+          <h3>LOGO DESIGN</h3>
+          <p>Startup Identity</p>
+        </div>
+      </div>
+
+      <div class="portfolio-card" data-category="branding">
+        <img src="https://res.cloudinary.com/dkysh74zg/image/upload/v1779389471/IMG-20260520-WA0013_gai0dc.jpg" alt="Branding Project 2"/>
+        <div class="portfolio-overlay">
+          <h3>BRANDING</h3>
+          <p>Corporate Identity</p>
+        </div>
+      </div>
+
+      <div class="portfolio-card" data-category="flyer">
+        <img src="https://res.cloudinary.com/dkysh74zg/image/upload/v1779389491/IMG-20260520-WA0014_w96epu.jpg" alt="Flyer Project 2"/>
+        <div class="portfolio-overlay">
+          <h3>FLYER DESIGN</h3>
+          <p>Church Event</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-box">
+      <p class="hero-tag">— LIKE WHAT YOU SEE?</p>
+      <h2>LET'S CREATE<br/>YOURS NEXT</h2>
+      <p>Every great brand starts with a great design. Let's build something extraordinary together.</p>
+      <div class="hero-btns">
+        <a href="order.html"><button class="primary-btn">Start a Project</button></a>
+        <a href="contact.html"><button class="secondary-btn">Contact Us</button></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="logo-area">
+          <img src="https://res.cloudinary.com/dkysh74zg/image/upload/v1779389443/IMG-20260520-WA0012_mrmh0l.jpg" alt="MG Logo" class="logo-image"/>
+          <div class="logo-text">
+            <h2>MULTI GRAPHIX</h2>
+            <p>INC</p>
+          </div>
+        </div>
+        <p class="footer-about">We create high-quality visual solutions that help brands stand out and connect meaningfully with their audience.</p>
+      </div>
+      <div class="footer-col">
+        <h3>QUICK LINKS</h3>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h3>SERVICES</h3>
+        <a href="services/logo-design.html">Logo Design</a>
+        <a href="services/branding.html">Branding</a>
+        <a href="services/web-development.html">Web Development</a>
+        <a href="services/ai-services.html">AI Services</a>
+        <a href="services/video-editing.html">Video Editing</a>
+        <a href="services/social-media.html">Social Media</a>
+      </div>
+      <div class="footer-col">
+        <h3>CONTACT</h3>
+        <p>📧 multigraphixinc@gmail.com</p>
+        <p>📞 +234 912 208 1042</p>
+        <p>📍 Nigeria</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-x"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Multi Graphix Inc. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
