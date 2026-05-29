@@ -45,71 +45,63 @@
   </section>
 
   <!-- ORDER FORM -->
-  <section>
-    <div class="order-wrap">
-      <div class="section-title">
-        <p>ORDER FORM</p>
-        <h2>PROJECT DETAILS</h2>
-      </div>
+  <form id="orderForm">
 
-      <div class="contact-form order-form">
-  <form action="https://formspree.io/f/xeedpqnd" method="POST">
+  <div class="form-row">
+    <input type="text" id="fullName" placeholder="Full Name" required/>
+    <input type="email" id="emailAddress" placeholder="Email Address" required/>
+  </div>
 
-    <div class="form-row">
-      <input type="text" name="Full Name" placeholder="Full Name" required/>
-      <input type="email" name="Email Address" placeholder="Email Address" required/>
-    </div>
+  <div class="form-row">
+    <input type="tel" id="phoneNumber" placeholder="Phone / WhatsApp Number" required/>
+    <input type="text" id="businessName" placeholder="Business / Brand Name"/>
+  </div>
 
-    <div class="form-row">
-      <input type="tel" name="Phone/WhatsApp" placeholder="Phone / WhatsApp Number" required/>
-      <input type="text" name="Business Name" placeholder="Business / Brand Name"/>
-    </div>
+  <select id="serviceNeeded" required>
+    <option value="" disabled selected>Select Service Needed</option>
+    <option>Logo Design</option>
+    <option>Branding Package</option>
+    <option>Web Development</option>
+    <option>AI Services</option>
+    <option>Video Editing</option>
+    <option>Social Media Management</option>
+    <option>UI/UX Design</option>
+    <option>Full Stack Development</option>
+    <option>Flyer / Poster Design</option>
+    <option>Full Brand Identity</option>
+    <option>Custom Package</option>
+  </select>
 
-    <select name="Service Needed" required>
-      <option value="" disabled selected>Select Service Needed</option>
-      <option>Logo Design</option>
-      <option>Branding Package</option>
-      <option>Web Development</option>
-      <option>AI Services</option>
-      <option>Video Editing</option>
-      <option>Social Media Management</option>
-      <option>UI/UX Design</option>
-      <option>Full Stack Development</option>
-      <option>Flyer / Poster Design</option>
-      <option>Full Brand Identity</option>
-      <option>Custom Package</option>
-    </select>
+  <select id="budgetRange">
+    <option value="" disabled selected>Select Budget Range</option>
+    <option>Under $100</option>
+    <option>$100 – $500</option>
+    <option>$500 – $1,000</option>
+    <option>$1,000 – $5,000</option>
+    <option>$5,000 – $10,000</option>
+    <option>$10,000 – $50,000</option>
+    <option>$50,000 and above</option>
+  </select>
 
-    <select name="Budget Range">
-      <option value="" disabled selected>Select Budget Range</option>
-      <option>Under $100</option>
-      <option>$100 – $500</option>
-      <option>$500 – $1,000</option>
-      <option>$1,000 – $5,000</option>
-      <option>$5,000 – $10,000</option>
-      <option>$10,000 – $50,000</option>
-      <option>$50,000 and above</option>
-    </select>
+  <select id="deliveryTimeline">
+    <option value="" disabled selected>Select Delivery Timeline</option>
+    <option>1 – 3 Days (Urgent)</option>
+    <option>3 – 7 Days (Standard)</option>
+    <option>1 – 2 Weeks</option>
+    <option>2 – 4 Weeks</option>
+    <option>Flexible</option>
+  </select>
 
-    <select name="Delivery Timeline">
-      <option value="" disabled selected>Select Delivery Timeline</option>
-      <option>1 – 3 Days (Urgent)</option>
-      <option>3 – 7 Days (Standard)</option>
-      <option>1 – 2 Weeks</option>
-      <option>2 – 4 Weeks</option>
-      <option>Flexible</option>
-    </select>
+  <input type="text" id="hearAboutUs" placeholder="How did you hear about us?"/>
 
-    <input type="text" name="How did you hear about us" placeholder="How did you hear about us?"/>
+  <textarea id="projectDescription" placeholder="Describe your project in detail — what you want, your style preference, colors, inspiration, etc." style="height: 200px;"></textarea>
 
-    <textarea name="Project Description" placeholder="Describe your project in detail — what you want, your style preference, colors, inspiration, etc." style="height: 200px;"></textarea>
+  <div class="order-submit">
+    <button type="button" class="primary-btn" onclick="submitOrder()">Submit Order</button>
+    <p>We will contact you within 24 hours via email or WhatsApp.</p>
+  </div>
 
-    <div class="order-submit">
-      <button type="submit" class="primary-btn">Submit Order</button>
-      <p>We will contact you within 24 hours via email or WhatsApp.</p>
-    </div>
-
-  </form>
+</form>
 </div>
   <!-- FOOTER -->
   <footer>
@@ -160,5 +152,75 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+function submitOrder() {
+  const name = document.getElementById('fullName').value.trim();
+  const email = document.getElementById('emailAddress').value.trim();
+  const phone = document.getElementById('phoneNumber').value.trim();
+  const business = document.getElementById('businessName').value.trim();
+  const service = document.getElementById('serviceNeeded').value;
+  const budget = document.getElementById('budgetRange').value;
+  const timeline = document.getElementById('deliveryTimeline').value;
+  const hear = document.getElementById('hearAboutUs').value.trim();
+  const description = document.getElementById('projectDescription').value.trim();
+
+  if (!name || !email || !phone || !service) {
+    alert('Please fill in all required fields.');
+    return;
+  }
+
+  // SEND TO WHATSAPP
+  const message = `
+🔥 *NEW ORDER — MULTI GRAPHIX INC* 🔥
+
+👤 *Name:* ${name}
+📧 *Email:* ${email}
+📞 *Phone:* ${phone}
+🏢 *Business:* ${business || 'Not provided'}
+
+🎯 *Service:* ${service}
+💰 *Budget:* ${budget || 'Not specified'}
+⏰ *Timeline:* ${timeline || 'Not specified'}
+📣 *Heard from:* ${hear || 'Not specified'}
+
+📝 *Project Details:*
+${description || 'No details provided'}
+
+---
+Sent from multigraphixinc.com
+  `.trim();
+
+  const whatsappNumber = '2349122081042';
+  const encodedMessage = encodeURIComponent(message);
+  const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+  // ALSO SEND TO FORMSPREE
+  fetch('https://formspree.io/f/xeedpqnd', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name, email, phone, business,
+      service, budget, timeline, hear, description
+    })
+  });
+
+  // OPEN WHATSAPP
+  window.open(whatsappURL, '_blank');
+
+  // SHOW SUCCESS
+  const btn = document.querySelector('.order-submit .primary-btn');
+  btn.textContent = 'Order Sent ✓';
+  btn.style.background = 'linear-gradient(135deg, #1a7a3a, #25D366)';
+  btn.disabled = true;
+
+  // CLEAR FORM
+  setTimeout(() => {
+    document.getElementById('orderForm').reset();
+    btn.textContent = 'Submit Order';
+    btn.style.background = '';
+    btn.disabled = false;
+  }, 5000);
+}
+</script>
 </body>
 </html>
