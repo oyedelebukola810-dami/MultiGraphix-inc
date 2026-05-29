@@ -1443,3 +1443,141 @@ img { max-width: 100%; }
     position: static !important;
   }
 }
+/* ORDER PAGE */
+.order-wrap {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.order-form-box {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(164,46,255,0.15);
+  border-radius: 24px;
+  padding: 50px 45px;
+  backdrop-filter: blur(10px);
+}
+
+.order-step {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 25px;
+  align-items: start;
+}
+
+.step-number {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  color: rgba(164,46,255,0.3);
+  line-height: 1;
+  padding-top: 5px;
+}
+
+.step-content h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 2px;
+  color: #A42EFF;
+  margin-bottom: 20px;
+}
+
+.order-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.field-group label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #888888;
+  text-transform: uppercase;
+}
+
+.field-group input,
+.field-group select,
+.field-group textarea {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(164,46,255,0.15);
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  transition: 0.3s;
+}
+
+.field-group input:focus,
+.field-group select:focus,
+.field-group textarea:focus {
+  outline: none;
+  border-color: #A42EFF;
+  background: rgba(164,46,255,0.05);
+}
+
+.field-group select option {
+  background: #0a0010;
+  color: #ffffff;
+}
+
+.field-group textarea {
+  height: 180px;
+  resize: none;
+}
+
+.order-divider {
+  height: 1px;
+  background: rgba(164,46,255,0.1);
+  margin: 35px 0;
+}
+
+.order-submit-wrap {
+  text-align: center;
+}
+
+.order-submit-btn {
+  width: 100%;
+  padding: 18px;
+  font-size: 16px;
+  letter-spacing: 2px;
+  border-radius: 14px;
+}
+
+.order-submit-btn i {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.order-note {
+  color: #666666;
+  font-size: 13px;
+  margin-top: 15px;
+  line-height: 1.6;
+}
+
+@media(max-width: 768px) {
+  .order-form-box {
+    padding: 35px 25px;
+  }
+  .order-step {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .step-number {
+    font-size: 32px;
+  }
+  .order-fields {
+    grid-template-columns: 1fr;
+  }
+}

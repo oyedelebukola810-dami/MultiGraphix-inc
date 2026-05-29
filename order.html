@@ -45,73 +45,176 @@
   </section>
 
   <!-- ORDER FORM -->
-  <form id="orderForm">
+  <section>
+    <div class="order-wrap">
 
-  <div class="form-row">
-    <input type="text" id="fullName" placeholder="Full Name" required/>
-    <input type="email" id="emailAddress" placeholder="Email Address" required/>
-  </div>
+      <div class="order-form-box">
 
-  <div class="form-row">
-    <input type="tel" id="phoneNumber" placeholder="Phone / WhatsApp Number" required/>
-    <input type="text" id="businessName" placeholder="Business / Brand Name"/>
-  </div>
+        <div class="order-step">
+          <div class="step-number">01</div>
+          <div class="step-content">
+            <h3>YOUR DETAILS</h3>
+            <div class="order-fields">
+              <div class="field-group">
+                <label>Full Name *</label>
+                <input type="text" id="fullName" placeholder="Enter your full name" required/>
+              </div>
+              <div class="field-group">
+                <label>Email Address *</label>
+                <input type="email" id="emailAddress" placeholder="Enter your email address" required/>
+              </div>
+              <div class="field-group">
+                <label>Phone / WhatsApp *</label>
+                <input type="tel" id="phoneNumber" placeholder="Enter your phone number" required/>
+              </div>
+              <div class="field-group">
+                <label>Business / Brand Name</label>
+                <input type="text" id="businessName" placeholder="Enter your business name"/>
+              </div>
+            </div>
+          </div>
+        </div>
 
-  <select id="serviceNeeded" required>
-    <option value="" disabled selected>Select Service Needed</option>
-    <option>Logo Design</option>
-    <option>Branding Package</option>
-    <option>Web Development</option>
-    <option>AI Services</option>
-    <option>Video Editing</option>
-    <option>Social Media Management</option>
-    <option>UI/UX Design</option>
-    <option>Full Stack Development</option>
-    <option>Flyer / Poster Design</option>
-    <option>Full Brand Identity</option>
-    <option>Custom Package</option>
-  </select>
+        <div class="order-divider"></div>
 
-  <select id="budgetRange">
-    <option value="" disabled selected>Select Budget Range</option>
-    <option>Under $100</option>
-    <option>$100 – $500</option>
-    <option>$500 – $1,000</option>
-    <option>$1,000 – $5,000</option>
-    <option>$5,000 – $10,000</option>
-    <option>$10,000 – $50,000</option>
-    <option>$50,000 and above</option>
-  </select>
+        <div class="order-step">
+          <div class="step-number">02</div>
+          <div class="step-content">
+            <h3>PROJECT DETAILS</h3>
+            <div class="order-fields">
+              <div class="field-group">
+                <label>Service Needed *</label>
+                <select id="serviceNeeded" required>
+                  <option value="" disabled selected>Select a service</option>
+                  <option>Logo Design</option>
+                  <option>Branding Package</option>
+                  <option>Web Development</option>
+                  <option>AI Services</option>
+                  <option>Video Editing</option>
+                  <option>Social Media Management</option>
+                  <option>UI/UX Design</option>
+                  <option>Full Stack Development</option>
+                  <option>Flyer / Poster Design</option>
+                  <option>Full Brand Identity</option>
+                  <option>Custom Package</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label>Budget Range</label>
+                <select id="budgetRange">
+                  <option value="" disabled selected>Select your budget</option>
+                  <option>Under $100</option>
+                  <option>$100 – $500</option>
+                  <option>$500 – $1,000</option>
+                  <option>$1,000 – $5,000</option>
+                  <option>$5,000 – $10,000</option>
+                  <option>$10,000 – $50,000</option>
+                  <option>$50,000 and above</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label>Delivery Timeline</label>
+                <select id="deliveryTimeline">
+                  <option value="" disabled selected>Select timeline</option>
+                  <option>1 – 3 Days (Urgent)</option>
+                  <option>3 – 7 Days (Standard)</option>
+                  <option>1 – 2 Weeks</option>
+                  <option>2 – 4 Weeks</option>
+                  <option>Flexible</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label>How did you hear about us?</label>
+                <select id="hearAboutUs">
+                  <option value="" disabled selected>Select an option</option>
+                  <option>Instagram</option>
+                  <option>Facebook</option>
+                  <option>TikTok</option>
+                  <option>Twitter/X</option>
+                  <option>Google Search</option>
+                  <option>Referral from a friend</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
 
-  <select id="deliveryTimeline">
-    <option value="" disabled selected>Select Delivery Timeline</option>
-    <option>1 – 3 Days (Urgent)</option>
-    <option>3 – 7 Days (Standard)</option>
-    <option>1 – 2 Weeks</option>
-    <option>2 – 4 Weeks</option>
-    <option>Flexible</option>
-  </select>
+        <div class="order-divider"></div>
 
-  <input type="text" id="hearAboutUs" placeholder="How did you hear about us?"/>
+        <div class="order-step">
+          <div class="step-number">03</div>
+          <div class="step-content">
+            <h3>PROJECT DESCRIPTION</h3>
+            <div class="order-fields">
+              <div class="field-group full-width">
+                <label>Describe Your Project *</label>
+                <textarea id="projectDescription" placeholder="Tell us everything about your project — what you want, your style preferences, colors, inspiration, references, and any other details that will help us understand your vision..."></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
 
-  <textarea id="projectDescription" placeholder="Describe your project in detail — what you want, your style preference, colors, inspiration, etc." style="height: 200px;"></textarea>
+        <div class="order-divider"></div>
 
-  <div class="order-submit">
-    <button type="button" class="primary-btn" onclick="submitOrder()">Submit Order</button>
-    <p>We will contact you within 24 hours via email or WhatsApp.</p>
-  </div>
+        <div class="order-submit-wrap">
+          <button class="primary-btn order-submit-btn" onclick="submitOrder()">
+            <i class="fab fa-whatsapp"></i> Submit Order via WhatsApp
+          </button>
+          <p class="order-note">Your order will be sent directly to our WhatsApp. We will respond within 24 hours.</p>
+        </div>
 
-</form>
-</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WHY ORDER WITH US -->
+  <section>
+    <div class="section-title">
+      <p>WHY CHOOSE US</p>
+      <h2>WHAT YOU GET</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>⚡ Fast Delivery</h3>
+        <p>We deliver on time, every time. Urgent projects handled with priority and care.</p>
+      </div>
+      <div class="service-card">
+        <h3>🔁 Free Revisions</h3>
+        <p>Not satisfied? We revise until you love it. Your satisfaction is our priority.</p>
+      </div>
+      <div class="service-card">
+        <h3>💬 Direct Communication</h3>
+        <p>Work directly with our team via WhatsApp for fast updates and feedback.</p>
+      </div>
+      <div class="service-card">
+        <h3>🏆 Premium Quality</h3>
+        <p>Every project is treated with the highest level of creativity and professionalism.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-box">
+      <p class="hero-tag">— HAVE QUESTIONS?</p>
+      <h2>NOT SURE WHAT<br/>YOU NEED?</h2>
+      <p>Talk to us first and we will recommend the best service and package for your goals.</p>
+      <div class="hero-btns">
+        <a href="contact.html"><button class="primary-btn">Contact Us</button></a>
+        <a href="pricing.html"><button class="secondary-btn">View Pricing</button></a>
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer>
     <div class="footer-grid">
       <div class="footer-col">
         <div class="logo-area">
-          <img src="https://res.cloudinary.com/dkysh74zg/image/upload/v1779389443/IMG-20260520-WA0012_mrmh0l.jpg" alt="MG Logo" class="logo-image"/>          <div class="logo-text">
-            <h2>MULTI GRAPHIX</h2>
-            <p>INC</p>
-          </div>
+          <img src="https://res.cloudinary.com/dkysh74zg/image/upload/v1779389443/IMG-20260520-WA0012_mrmh0l.jpg" alt="MG Logo" class="logo-image"/>
+          <div class="logo-text"><h2>MULTI GRAPHIX</h2><p>INC</p></div>
         </div>
         <p class="footer-about">We create high-quality visual solutions that help brands stand out and connect meaningfully with their audience.</p>
       </div>
@@ -131,7 +234,7 @@
         <a href="services/web-development.html">Web Development</a>
         <a href="services/ai-services.html">AI Services</a>
         <a href="services/video-editing.html">Video Editing</a>
-        <a href="services/social-media.html">Social Media</a>
+        <a href="services/full-stack-development.html">Full Stack Development</a>
       </div>
       <div class="footer-col">
         <h3>CONTACT</h3>
@@ -140,9 +243,9 @@
         <p>📍 Nigeria</p>
         <div class="social-links">
           <a href="https://www.facebook.com/share/1HMiYxPQNm/" target="_blank"><i class="fab fa-facebook"></i></a>
-<a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-<a href="https://www.tiktok.com/@multigraphixinc?_r=1&_t=ZS-96htHN8RgG4" target="_blank"><i class="fab fa-tiktok"></i></a>
-<a href="#" target="_blank"><i class="fab fa-x"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
         </div>
       </div>
     </div>
@@ -153,24 +256,23 @@
 
   <script src="script.js"></script>
   <script>
-function submitOrder() {
-  const name = document.getElementById('fullName').value.trim();
-  const email = document.getElementById('emailAddress').value.trim();
-  const phone = document.getElementById('phoneNumber').value.trim();
-  const business = document.getElementById('businessName').value.trim();
-  const service = document.getElementById('serviceNeeded').value;
-  const budget = document.getElementById('budgetRange').value;
-  const timeline = document.getElementById('deliveryTimeline').value;
-  const hear = document.getElementById('hearAboutUs').value.trim();
-  const description = document.getElementById('projectDescription').value.trim();
+  function submitOrder() {
+    const name = document.getElementById('fullName').value.trim();
+    const email = document.getElementById('emailAddress').value.trim();
+    const phone = document.getElementById('phoneNumber').value.trim();
+    const business = document.getElementById('businessName').value.trim();
+    const service = document.getElementById('serviceNeeded').value;
+    const budget = document.getElementById('budgetRange').value;
+    const timeline = document.getElementById('deliveryTimeline').value;
+    const hear = document.getElementById('hearAboutUs').value;
+    const description = document.getElementById('projectDescription').value.trim();
 
-  if (!name || !email || !phone || !service) {
-    alert('Please fill in all required fields.');
-    return;
-  }
+    if (!name || !email || !phone || !service || !description) {
+      alert('Please fill in all required fields marked with *');
+      return;
+    }
 
-  // SEND TO WHATSAPP
-  const message = `
+    const message = `
 🔥 *NEW ORDER — MULTI GRAPHIX INC* 🔥
 
 👤 *Name:* ${name}
@@ -184,43 +286,45 @@ function submitOrder() {
 📣 *Heard from:* ${hear || 'Not specified'}
 
 📝 *Project Details:*
-${description || 'No details provided'}
+${description}
 
 ---
-Sent from multigraphixinc.com
-  `.trim();
+Sent from multigraphixinc.vercel.app
+    `.trim();
 
-  const whatsappNumber = '2349122081042';
-  const encodedMessage = encodeURIComponent(message);
-  const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    const whatsappNumber = '2349122081042';
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
 
-  // ALSO SEND TO FORMSPREE
-  fetch('https://formspree.io/f/xeedpqnd', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      name, email, phone, business,
-      service, budget, timeline, hear, description
-    })
-  });
+    fetch('https://formspree.io/f/xeedpqnd', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, phone, business, service, budget, timeline, hear, description })
+    });
 
-  // OPEN WHATSAPP
-  window.open(whatsappURL, '_blank');
+    window.open(whatsappURL, '_blank');
 
-  // SHOW SUCCESS
-  const btn = document.querySelector('.order-submit .primary-btn');
-  btn.textContent = 'Order Sent ✓';
-  btn.style.background = 'linear-gradient(135deg, #1a7a3a, #25D366)';
-  btn.disabled = true;
+    const btn = document.querySelector('.order-submit-btn');
+    btn.innerHTML = '<i class="fas fa-check"></i> Order Sent Successfully!';
+    btn.style.background = 'linear-gradient(135deg, #1a7a3a, #25D366)';
+    btn.disabled = true;
 
-  // CLEAR FORM
-  setTimeout(() => {
-    document.getElementById('orderForm').reset();
-    btn.textContent = 'Submit Order';
-    btn.style.background = '';
-    btn.disabled = false;
-  }, 5000);
-}
-</script>
+    setTimeout(() => {
+      document.getElementById('fullName').value = '';
+      document.getElementById('emailAddress').value = '';
+      document.getElementById('phoneNumber').value = '';
+      document.getElementById('businessName').value = '';
+      document.getElementById('serviceNeeded').selectedIndex = 0;
+      document.getElementById('budgetRange').selectedIndex = 0;
+      document.getElementById('deliveryTimeline').selectedIndex = 0;
+      document.getElementById('hearAboutUs').selectedIndex = 0;
+      document.getElementById('projectDescription').value = '';
+      btn.innerHTML = '<i class="fab fa-whatsapp"></i> Submit Order via WhatsApp';
+      btn.style.background = '';
+      btn.disabled = false;
+    }, 5000);
+  }
+  </script>
+
 </body>
 </html>
