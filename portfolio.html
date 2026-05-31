@@ -197,5 +197,42 @@
   </footer>
 
   <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const sb = supabase.createClient(
+  'https://pktmqpycmimmiwohfgwq.supabase.co',
+  'sb_publishable_O7HJ57_PR6b-QURkHWO4Bw_ycc-DB6U'
+);
+
+async function loadPortfolioFromSupabase() {
+  const { data, error } = await sb.from('portfolio').select('*').order('created_at', { ascending: false });
+
+  if (error || !data || data.length === 0) return;
+
+  const grid = document.querySelector('.portfolio-full');
+  if (!grid) return;
+
+  grid.innerHTML = data.map(item => `
+    <div class="portfolio-card" data-category="${item.category}">
+      <img src="${item.url}" alt="${item.title}" onerror="this.src='https://placehold.co/300x280/1a0030/A42EFF?text=Image'"/>
+      <div class="portfolio-overlay">
+        <h3>${item.title.toUpperCase()}</h3>
+        <p>${item.description || ''}</p>
+      </div>
+    </div>
+  `).join('');
+
+  // Re-run filter after loading
+  const activeFilter = document.querySelector('.filter-btn.active-filter');
+  if (activeFilter) {
+    const filter = activeFilter.getAttribute('data-filter');
+    document.querySelectorAll('.portfolio-card[data-category]').forEach(card => {
+      card.style.display = (filter === 'all' || card.getAttribute('data-category') === filter) ? 'block' : 'none';
+    });
+  }
+}
+
+loadPortfolioFromSupabase();
+</script>
 </body>
 </html>
