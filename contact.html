@@ -52,17 +52,18 @@
 
   <!-- CONTACT SECTION -->
   <section>
-    <div class="contact-form">
-  <form action="https://formspree.io/f/xeedpqnd" method="POST">
-
+    <div class="contact-form-wrap">
+  <div class="section-title">
+    <p>SEND A MESSAGE</p>
+    <h2>WRITE TO US</h2>
+  </div>
+  <div class="contact-form">
     <div class="form-row">
-      <input type="text" name="Name" placeholder="Your Name" required/>
-      <input type="email" name="Email" placeholder="Your Email" required/>
+      <input type="text" id="contactName" placeholder="Your Name" required/>
+      <input type="email" id="contactEmail" placeholder="Your Email" required/>
     </div>
-
-    <input type="text" name="Subject" placeholder="Subject"/>
-
-    <select name="Service">
+    <input type="text" id="contactSubject" placeholder="Subject"/>
+    <select id="contactService">
       <option value="" disabled selected>Select a Service</option>
       <option>Logo Design</option>
       <option>Branding</option>
@@ -76,15 +77,12 @@
       <option>Full Brand Identity</option>
       <option>Other</option>
     </select>
-
-    <textarea name="Message" placeholder="Tell us about your project..."></textarea>
-
-    <button type="submit" class="primary-btn" style="width: fit-content;">Send Message</button>
-
-  </form>
+    <textarea id="contactMessage" placeholder="Tell us about your project..."></textarea>
+    <button class="primary-btn" onclick="sendContactMessage()" style="width: fit-content;">
+      <i class="fab fa-whatsapp"></i> Send Message via WhatsApp
+    </button>
+  </div>
 </div>
-
-    </div>
   </section>
 
   <!-- FOOTER -->
@@ -137,5 +135,64 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+function sendContactMessage() {
+  const name = document.getElementById('contactName').value.trim();
+  const email = document.getElementById('contactEmail').value.trim();
+  const subject = document.getElementById('contactSubject').value.trim();
+  const service = document.getElementById('contactService').value;
+  const message = document.getElementById('contactMessage').value.trim();
+
+  if (!name || !email || !message) {
+    alert('Please fill in your name, email and message.');
+    return;
+  }
+
+  const whatsappMessage = `
+📩 *NEW MESSAGE — MULTI GRAPHIX INC*
+
+👤 *Name:* ${name}
+📧 *Email:* ${email}
+📌 *Subject:* ${subject || 'Not specified'}
+🎯 *Service:* ${service || 'Not specified'}
+
+💬 *Message:*
+${message}
+
+---
+Sent from multigraphixinc.vercel.app
+  `.trim();
+
+  const whatsappNumber = '2349122081042';
+  const encodedMessage = encodeURIComponent(whatsappMessage);
+  const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+  // Also try Formspree
+  fetch('https://formspree.io/f/xeedpqnd', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, email, subject, service, message })
+  });
+
+  window.open(whatsappURL, '_blank');
+
+  // Show success
+  const btn = document.querySelector('.contact-form .primary-btn');
+  btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+  btn.style.background = 'linear-gradient(135deg, #1a7a3a, #25D366)';
+  btn.disabled = true;
+
+  setTimeout(() => {
+    document.getElementById('contactName').value = '';
+    document.getElementById('contactEmail').value = '';
+    document.getElementById('contactSubject').value = '';
+    document.getElementById('contactService').selectedIndex = 0;
+    document.getElementById('contactMessage').value = '';
+    btn.innerHTML = '<i class="fab fa-whatsapp"></i> Send Message via WhatsApp';
+    btn.style.background = '';
+    btn.disabled = false;
+  }, 5000);
+}
+</script>
 </body>
 </html>
