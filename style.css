@@ -1590,13 +1590,15 @@ img { max-width: 100%; }
 }
 /* FORCE PORTFOLIO IMAGE FIX */
 .portfolio-full .portfolio-card {
-  height: 280px !important;
+  height: auto !important;
   overflow: hidden !important;
+  border-radius: 16px !important;
 }
 
 .portfolio-full .portfolio-card img {
   width: 100% !important;
-  height: 280px !important;
+  height: auto !important;
+  max-height: 500px !important;
   object-fit: cover !important;
   object-position: center top !important;
   display: block !important;
