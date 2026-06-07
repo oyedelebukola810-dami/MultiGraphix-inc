@@ -171,30 +171,31 @@
   </footer>
 
   <script src="script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const sb = supabase.createClient(
+const sbTeam = supabase.createClient(
   'https://pktmqpycmimmiwohfgwq.supabase.co',
   'sb_publishable_O7HJ57_PR6b-QURkHWO4Bw_ycc-DB6U'
 );
 
+const teamPages = {
+  ceo: 'team/ceo.html',
+  creative: 'team/creative-director.html',
+  ai: 'team/ai-engineer.html',
+  social: 'team/social-media-manager.html',
+  marketing: 'team/marketing-lead.html'
+};
+
 async function loadTeamFromSupabase() {
-  const { data, error } = await sb.from('team').select('*');
+  const { data, error } = await sbTeam.from('team').select('*');
+
   if (error || !data || data.length === 0) return;
 
   const grid = document.querySelector('.team-grid');
   if (!grid) return;
 
-  const pages = {
-    ceo: 'team/ceo.html',
-    creative: 'team/creative-director.html',
-    ai: 'team/ai-engineer.html',
-    social: 'team/social-media-manager.html',
-    marketing: 'team/marketing-lead.html'
-  };
-
   grid.innerHTML = data.map(member => `
-    <a href="${pages[member.member_key] || '#'}" class="team-card-link">
+    <a href="${teamPages[member.member_key] || '#'}" class="team-card-link">
       <div class="team-card">
         <img src="${member.photo}" alt="${member.name}"
           onerror="this.src='https://placehold.co/240x250/1a0030/A42EFF?text=?'"/>
@@ -208,6 +209,7 @@ async function loadTeamFromSupabase() {
 }
 
 loadTeamFromSupabase();
+</script>
 </script>
 </body>
 </html>
