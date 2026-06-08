@@ -89,11 +89,40 @@
     .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
     .loading { color: #888; font-size: 14px; padding: 20px 0; }
 
-    @media(max-width: 768px) {
-      .admin-body { grid-template-columns: 1fr; }
-      .admin-sidebar { display: none; }
-      .form-row-2 { grid-template-columns: 1fr; }
-    }
+   @media(max-width: 768px) {
+  .admin-body {
+    grid-template-columns: 1fr !important;
+  }
+  .admin-sidebar {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 5px !important;
+    padding: 15px !important;
+    border-right: none !important;
+    border-bottom: 1px solid rgba(164,46,255,0.1) !important;
+  }
+  .sidebar-item {
+    padding: 10px 15px !important;
+    border-left: none !important;
+    border-radius: 8px !important;
+    background: rgba(255,255,255,0.03) !important;
+    border: 1px solid rgba(164,46,255,0.15) !important;
+    font-size: 12px !important;
+  }
+  .sidebar-item.active {
+    background: rgba(164,46,255,0.15) !important;
+    border-color: #A42EFF !important;
+  }
+  .sidebar-item i {
+    display: none !important;
+  }
+  .admin-main {
+    padding: 25px 4% !important;
+  }
+  .form-row-2 {
+    grid-template-columns: 1fr !important;
+  }
+}
   </style>
 </head>
 <body>
