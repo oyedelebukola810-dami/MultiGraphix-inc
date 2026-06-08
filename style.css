@@ -1603,3 +1603,27 @@ img { max-width: 100%; }
   object-position: center top !important;
   display: block !important;
 }
+/* PORTFOLIO LIVE BUTTON */
+.portfolio-live-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 7px 16px;
+  background: linear-gradient(135deg, #3E016C, #A42EFF);
+  color: #ffffff !important;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.portfolio-live-btn:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
+.portfolio-live-btn i {
+  margin-left: 5px;
+  font-size: 11px;
+}

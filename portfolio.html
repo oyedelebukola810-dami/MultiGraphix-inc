@@ -53,14 +53,20 @@
   <!-- FILTER BUTTONS -->
   <section style="padding-top: 0;">
     <div class="filter-btns">
-      <button class="filter-btn active-filter" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="logo">Logo Design</button>
-      <button class="filter-btn" data-filter="branding">Branding</button>
-      <button class="filter-btn" data-filter="flyer">Flyer</button>
-      <button class="filter-btn" data-filter="mockup">Mockup</button>
-      <button class="filter-btn" data-filter="web">Web</button>
-      <button class="filter-btn" data-filter="social">Social Media</button>
-    </div>
+  <button class="filter-btn active-filter" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="logo">Logo Design</button>
+  <button class="filter-btn" data-filter="branding">Branding</button>
+  <button class="filter-btn" data-filter="flyer">Flyer / Poster</button>
+  <button class="filter-btn" data-filter="web">Web Development</button>
+  <button class="filter-btn" data-filter="webapp">Web App</button>
+  <button class="filter-btn" data-filter="mobile">Mobile App</button>
+  <button class="filter-btn" data-filter="fullstack">Full Stack</button>
+  <button class="filter-btn" data-filter="video">Video Editing</button>
+  <button class="filter-btn" data-filter="uiux">UI/UX Design</button>
+  <button class="filter-btn" data-filter="ai">AI Services</button>
+  <button class="filter-btn" data-filter="social">Social Media</button>
+  <button class="filter-btn" data-filter="mockup">Mockup</button>
+</div>
 
     <!-- PORTFOLIO GRID -->
     <div class="portfolio-grid portfolio-full">
@@ -207,11 +213,14 @@
 <script>
 const sb = supabase.createClient(
   'https://pktmqpycmimmiwohfgwq.supabase.co',
-  'sb_publishable_O7HJ57_PR6b-QURkHWO4Bw_ycc-DB6U'
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBrdG1xcHljbWltbWl3b2hmZ3dxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk5ODU5NjksImV4cCI6MjA5NTU2MTk2OX0.R3VU-NIcQwSu1wFWM2txAgZ4quQE_FcsNik6Ww2p14M'
 );
 
-async function loadPortfolioFromSupabase() {
-  const { data, error } = await sb.from('portfolio').select('*').order('created_at', { ascending: false });
+async function loadPortfolio() {
+  const { data, error } = await sb
+    .from('portfolio')
+    .select('*')
+    .order('created_at', { ascending: false });
 
   if (error || !data || data.length === 0) return;
 
@@ -220,25 +229,28 @@ async function loadPortfolioFromSupabase() {
 
   grid.innerHTML = data.map(item => `
     <div class="portfolio-card" data-category="${item.category}">
-      <img src="${item.url}" alt="${item.title}" onerror="this.src='https://placehold.co/300x280/1a0030/A42EFF?text=Image'"/>
+      <img src="${item.url}" alt="${item.title}"
+        onerror="this.src='https://placehold.co/300x280/1a0030/A42EFF?text=Image'"/>
       <div class="portfolio-overlay">
         <h3>${item.title.toUpperCase()}</h3>
         <p>${item.description || ''}</p>
+        ${item.live_url ? `<a href="${item.live_url}" target="_blank" class="portfolio-live-btn">View Live <i class="fas fa-external-link-alt"></i></a>` : ''}
       </div>
     </div>
   `).join('');
 
-  // Re-run filter after loading
+  // Re-run filter
   const activeFilter = document.querySelector('.filter-btn.active-filter');
   if (activeFilter) {
     const filter = activeFilter.getAttribute('data-filter');
     document.querySelectorAll('.portfolio-card[data-category]').forEach(card => {
-      card.style.display = (filter === 'all' || card.getAttribute('data-category') === filter) ? 'block' : 'none';
+      card.style.display = (filter === 'all' || card.getAttribute('data-category') === filter)
+        ? 'block' : 'none';
     });
   }
 }
 
-loadPortfolioFromSupabase();
+loadPortfolio();
 </script>
 </body>
 </html>

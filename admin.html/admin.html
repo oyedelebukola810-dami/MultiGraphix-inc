@@ -197,16 +197,23 @@
           <div class="form-row-2">
             <input type="text" class="admin-input" id="newPortfolioTitle" placeholder="Project Title"/>
             <select class="admin-select" id="newPortfolioCategory">
-              <option value="logo">Logo Design</option>
-              <option value="branding">Branding</option>
-              <option value="flyer">Flyer</option>
-              <option value="mockup">Mockup</option>
-              <option value="web">Web</option>
-              <option value="social">Social Media</option>
-            </select>
+  <option value="logo">Logo Design</option>
+  <option value="branding">Branding</option>
+  <option value="flyer">Flyer / Poster</option>
+  <option value="web">Web Development</option>
+  <option value="webapp">Web App</option>
+  <option value="mobile">Mobile App</option>
+  <option value="fullstack">Full Stack</option>
+  <option value="video">Video Editing</option>
+  <option value="uiux">UI/UX Design</option>
+  <option value="ai">AI Services</option>
+  <option value="social">Social Media</option>
+  <option value="mockup">Mockup</option>
+</select>
           </div>
           <input type="text" class="admin-input" id="newPortfolioDesc" placeholder="Short Description"/>
-          <button class="admin-btn" onclick="addPortfolio()"><i class="fas fa-plus"></i> Add to Portfolio</button>
+<input type="text" class="admin-input" id="newPortfolioLiveUrl" placeholder="Live URL (optional) e.g. https://clientwebsite.com"/>
+<button class="admin-btn" onclick="addPortfolio()">
           <div class="success-msg" id="portfolioSuccess">✅ Portfolio image added! It is now live on the website.</div>
           <div class="error-msg" id="portfolioError">❌ Error adding image. Try again.</div>
         </div>
@@ -478,10 +485,11 @@ async function addPortfolio() {
   const title = document.getElementById('newPortfolioTitle').value.trim();
   const category = document.getElementById('newPortfolioCategory').value;
   const description = document.getElementById('newPortfolioDesc').value.trim();
+  const live_url = document.getElementById('newPortfolioLiveUrl').value.trim();
 
   if (!url || !title) { alert('Please fill in URL and title.'); return; }
 
-  const { error } = await sb.from('portfolio').insert([{ url, title, category, description }]);
+  const { error } = await sb.from('portfolio').insert([{ url, title, category, description, live_url }]);
 
   if (error) {
     document.getElementById('portfolioError').style.display = 'block';
