@@ -139,43 +139,64 @@
   <script src="script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const sb = supabase.createClient(
+const { createClient } = supabase;
+const sb = createClient(
   'https://pktmqpycmimmiwohfgwq.supabase.co',
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBrdG1xcHljbWltbWl3b2hmZ3dxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk5ODU5NjksImV4cCI6MjA5NTU2MTk2OX0.R3VU-NIcQwSu1wFWM2txAgZ4quQE_FcsNik6Ww2p14M'
 );
 
-// =====================
-// PORTFOLIO FILTER
-// =====================
-function initPortfolioFilter() {
-  const filterBtns = document.querySelectorAll('.filter-btn');
+async function loadPortfolio() {
+  try {
+    const { data, error } = await sb
+      .from('portfolio')
+      .select('*')
+      .order('created_at', { ascending: false });
 
-  if (filterBtns.length > 0) {
+    const grid = document.querySelector('.portfolio-full');
+
+    if (error) {
+      console.error('Supabase error:', error);
+      grid.innerHTML = '<p style="color:red;">Error loading portfolio.</p>';
+      return;
+    }
+
+    if (!data || data.length === 0) {
+      grid.innerHTML = '<p style="color:#888;">No portfolio items yet.</p>';
+      return;
+    }
+
+    grid.innerHTML = data.map(item => `
+      <div class="portfolio-card" data-category="${item.category}">
+        <img src="${item.url}" alt="${item.title}"
+          onerror="this.src='https://placehold.co/300x280/1a0030/A42EFF?text=Image'"/>
+        <div class="portfolio-overlay">
+          <h3>${item.title.toUpperCase()}</h3>
+          <p>${item.description || ''}</p>
+          ${item.live_url ? `<a href="${item.live_url}" target="_blank" class="portfolio-live-btn">View Live <i class="fas fa-external-link-alt"></i></a>` : ''}
+        </div>
+      </div>
+    `).join('');
+
+    // Init filter after loading
+    const filterBtns = document.querySelectorAll('.filter-btn');
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         filterBtns.forEach(b => b.classList.remove('active-filter'));
         btn.classList.add('active-filter');
-
         const filter = btn.getAttribute('data-filter');
-        const portfolioCards = document.querySelectorAll('.portfolio-card[data-category]');
-
-        portfolioCards.forEach(card => {
-          if (filter === 'all' || card.getAttribute('data-category') === filter) {
-            card.style.display = 'block';
-            card.style.animation = 'fadeIn 0.4s ease';
-          } else {
-            card.style.display = 'none';
-          }
+        document.querySelectorAll('.portfolio-card[data-category]').forEach(card => {
+          card.style.display = (filter === 'all' || card.getAttribute('data-category') === filter)
+            ? 'block' : 'none';
         });
       });
     });
+
+  } catch(err) {
+    console.error('Error:', err);
   }
 }
 
-// Run filter init after page loads
-window.addEventListener('load', () => {
-  setTimeout(initPortfolioFilter, 1500);
-});
+document.addEventListener('DOMContentLoaded', loadPortfolio);
 </script>
 </body>
 </html>
